@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import `in`.hahow.android_recruit_project.ui.home.HomeScreen
 
 @Composable
 fun HahowNavGraph(
@@ -23,7 +24,7 @@ fun HahowNavGraph(
         modifier = modifier
     ) {
         composable(HahowDestinations.HOME_ROUTE) {
-
+            HomeScreen()
         }
     }
 }
