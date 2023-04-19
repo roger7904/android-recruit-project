@@ -1,12 +1,13 @@
 package `in`.hahow.android_recruit_project.ui.home
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.data.model.Courses
+import com.example.data.result.*
 import com.example.domain.usecase.GetCoursesResourcesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,12 +15,38 @@ class HomeViewModel @Inject constructor(
     getCoursesResourcesUseCase: GetCoursesResourcesUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    init {
 
-        viewModelScope.launch {
-            getCoursesResourcesUseCase().collect { data ->
-                Log.d("TAG", ": HomeViewModel $data")
+    val homeUiState: StateFlow<HomeUiState> = homeUiState(getCoursesResourcesUseCase)
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = HomeUiState.Loading,
+        )
+
+    private fun homeUiState(getCoursesResourcesUseCase: GetCoursesResourcesUseCase) : Flow<HomeUiState> {
+        return getCoursesResourcesUseCase()
+            .asResult()
+            .map { coursesResult ->
+                when (coursesResult) {
+                    is Result.Success -> {
+                        HomeUiState.Success(coursesResult.data)
+                    }
+                    is Result.Loading -> {
+                        HomeUiState.Loading
+                    }
+                    is Result.Error -> {
+                        HomeUiState.Error
+                    }
+                    else -> {
+                        HomeUiState.Error
+                    }
+                }
             }
-        }
     }
+}
+
+sealed interface HomeUiState {
+    data class Success(val courses: Courses) : HomeUiState
+    object Error : HomeUiState
+    object Loading : HomeUiState
 }

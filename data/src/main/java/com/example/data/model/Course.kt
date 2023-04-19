@@ -6,23 +6,23 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Courses(
     @SerialName("data")
-    val data: List<Course>? = null,
+    val data: List<Course>,
 )
 
 @Serializable
 data class Course(
-    val successCriteria: SuccessCriteria? = null,
-    val numSoldTickets: Int? = null,
-    val status: Status? = null,
+    val successCriteria: SuccessCriteria,
+    val numSoldTickets: Int,
+    val status: Status,
     val proposalDueTime: String? = null,
-    val title: String? = null,
-    val coverImageUrl: String? = null,
+    val title: String,
+    val coverImageUrl: String,
     val totalVideoLengthInSeconds: Int? = null
 )
 
 @Serializable
 data class SuccessCriteria(
-    val numSoldTickets: Int? = null
+    val numSoldTickets: Int
 )
 
 @Serializable
