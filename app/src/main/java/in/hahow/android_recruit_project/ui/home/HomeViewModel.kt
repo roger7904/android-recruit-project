@@ -1,5 +1,6 @@
 package `in`.hahow.android_recruit_project.ui.home
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -35,6 +36,7 @@ class HomeViewModel @Inject constructor(
                         HomeUiState.Loading
                     }
                     is Result.Error -> {
+                        Log.e("HomeViewModel", "HomeUiState Error: ", coursesResult.exception)
                         HomeUiState.Error
                     }
                     else -> {

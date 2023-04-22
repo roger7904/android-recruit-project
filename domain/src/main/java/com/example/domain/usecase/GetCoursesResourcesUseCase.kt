@@ -16,13 +16,13 @@ class GetCoursesResourcesUseCase @Inject constructor(
             coursesDto.map { courseDto ->
                 when (courseDto.status) {
                     Status.INCUBATING -> {
-                        val daysRemain: Long = courseDto.proposalDueTime?.calculateDaysRemain() ?: 0
+                        val daysRemain: Long? = courseDto.proposalDueTime?.calculateDaysRemain()
                         Course.Incubating(
                             title = courseDto.title,
                             successCriteria = courseDto.successCriteria,
                             numSoldTickets = courseDto.numSoldTickets,
                             coverImageUrl = courseDto.coverImageUrl,
-                            isExpired = daysRemain <= 0,
+                            isExpired = daysRemain == null,
                             countDown = daysRemain
                         )
                     }

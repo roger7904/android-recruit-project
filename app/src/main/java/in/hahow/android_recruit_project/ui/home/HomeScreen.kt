@@ -59,7 +59,8 @@ fun HomeScreen(
                                 statusBackgroundColor = Incubating,
                                 progressString = "test",
                                 progressBackgroundColor = Incubating,
-                                progress = 0.5f
+                                progress = 0.5f,
+                                countDown = course.countDown
                             )
                         }
                         is Course.Success -> {

@@ -9,7 +9,7 @@ sealed class Course {
         val numSoldTickets: Int,
         val coverImageUrl: String,
         val isExpired: Boolean,
-        val countDown: Long,
+        val countDown: Long?,
     ) : Course()
 
     data class Published(

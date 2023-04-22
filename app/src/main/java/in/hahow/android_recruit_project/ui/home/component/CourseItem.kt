@@ -10,8 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import `in`.hahow.android_recruit_project.R
 
 @Composable
 fun CourseItem(
@@ -69,6 +71,18 @@ fun CourseItem(
                 progress = progress,
                 progressColor = progressBackgroundColor
             )
+            countDown?.let {
+                IconWithText(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(horizontal = 10.dp),
+                    iconRes = R.drawable.icon_count_down,
+                    text = stringResource(
+                        R.string.days_remain,
+                        countDown,
+                    ),
+                )
+            }
         }
     }
 }
