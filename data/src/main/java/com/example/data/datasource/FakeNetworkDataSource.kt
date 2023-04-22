@@ -1,6 +1,6 @@
 package com.example.data.datasource
 
-import com.example.data.model.Courses
+import com.example.data.model.CoursesDto
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -15,7 +15,7 @@ class FakeNetworkDataSource @Inject constructor(
 ) : NetworkDataSource {
 
     @OptIn(ExperimentalSerializationApi::class)
-    override suspend fun getCourses(): Courses =
+    override suspend fun getCourses(): CoursesDto =
         withContext(ioDispatcher) {
             assets.open(COURSES_ASSET).use(networkJson::decodeFromStream)
         }

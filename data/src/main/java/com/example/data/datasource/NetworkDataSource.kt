@@ -1,7 +1,7 @@
 package com.example.data.datasource
 
-import com.example.data.model.Courses
+import com.example.data.model.CoursesDto
 
 interface NetworkDataSource {
-    suspend fun getCourses(): Courses
+    suspend fun getCourses(): CoursesDto
 }

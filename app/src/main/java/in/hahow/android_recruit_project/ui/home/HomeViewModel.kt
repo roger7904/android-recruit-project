@@ -3,8 +3,8 @@ package `in`.hahow.android_recruit_project.ui.home
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.model.Courses
 import com.example.data.result.*
+import com.example.domain.model.Course
 import com.example.domain.usecase.GetCoursesResourcesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(
 }
 
 sealed interface HomeUiState {
-    data class Success(val courses: Courses) : HomeUiState
+    data class Success(val courses: List<Course>) : HomeUiState
     object Error : HomeUiState
     object Loading : HomeUiState
 }

@@ -4,13 +4,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Courses(
+data class CoursesDto(
     @SerialName("data")
-    val data: List<Course>,
+    val data: List<CourseDto>,
 )
 
 @Serializable
-data class Course(
+data class CourseDto(
     val successCriteria: SuccessCriteria,
     val numSoldTickets: Int,
     val status: Status,

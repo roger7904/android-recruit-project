@@ -2,8 +2,11 @@ package `in`.hahow.android_recruit_project.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,10 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Gray
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.domain.model.Course
 import com.skydoves.landscapist.glide.GlideImage
-import `in`.hahow.android_recruit_project.ui.theme.HahowTheme
+import `in`.hahow.android_recruit_project.R
 
 @Composable
 fun HomeScreen(
@@ -41,23 +45,25 @@ fun HomeScreen(
                 }
             }
             is HomeUiState.Success -> {
-                items((homeUiState as HomeUiState.Success).courses.data) { course ->
-                    GlideImage(
-                        modifier = modifier,
-                        imageModel = { course.coverImageUrl },
-                        loading = {
-                            Box(
-                                modifier = Modifier.background(
-                                    brush = Brush.linearGradient(
-                                        listOf(Gray, Color.White)
-                                    )
-                                )
+                items((homeUiState as HomeUiState.Success).courses) { course ->
+                    when (course) {
+                        is Course.Incubating -> {
+                            IncubatingCourseItem(
+                                imageUrl = course.coverImageUrl,
+                                statusString = stringResource(id = R.string.status_incubating)
                             )
-                        },
-                        failure = {
-                            Text(text = "image request failed.")
                         }
-                    )
+                        is Course.Success -> {
+                            SuccessCourseItem(
+                                course = course
+                            )
+                        }
+                        is Course.Published -> {
+                            PublishedCourseItem(
+                                course = course
+                            )
+                        }
+                    }
                 }
             }
             is HomeUiState.Error -> {
@@ -73,17 +79,46 @@ fun HomeScreen(
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(
-        text = "Hello $name!",
-        color = MaterialTheme.colorScheme.onBackground
-    )
+fun IncubatingCourseItem(
+    imageUrl: String,
+    statusString: String
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth(0.3f)
+            .aspectRatio(1.6f),
+        contentAlignment = Alignment.BottomEnd,
+    ) {
+        GlideImage(
+            imageModel = { imageUrl },
+            loading = {
+                Box(
+                    modifier = Modifier.background(
+                        brush = Brush.linearGradient(
+                            listOf(Gray, Color.White)
+                        )
+                    )
+                )
+            },
+            failure = {
+                Text(text = "image request failed.")
+            }
+        )
+        Card{
+            Text(
+                text = statusString,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+        }
+    }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    HahowTheme {
-        Greeting("Android")
-    }
+fun SuccessCourseItem(course: Course.Success) {
+
+}
+
+@Composable
+fun PublishedCourseItem(course: Course.Published) {
+
 }
