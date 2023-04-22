@@ -22,10 +22,12 @@ fun CourseItem(
     statusBackgroundColor: Color,
     progressString: String,
     progressBackgroundColor: Color,
+    progress: Float,
     countDown: Long? = null,
 ) {
     Row(
         modifier = modifier
+            .height(IntrinsicSize.Min)
             .background(MaterialTheme.colorScheme.background)
             .padding(16.dp)
     ) {
@@ -45,17 +47,27 @@ fun CourseItem(
             )
         }
         Box(
-            modifier = Modifier.weight(0.7f)
-        ){
+            modifier = Modifier
+                .fillMaxHeight()
+                .weight(0.7f)
+        ) {
             Text(
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .padding(horizontal = 10.dp),
                 text = title,
-                color =MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleSmall,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
+            )
+            ProgressBar(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(horizontal = 10.dp),
+                title = progressString,
+                progress = progress,
+                progressColor = progressBackgroundColor
             )
         }
     }

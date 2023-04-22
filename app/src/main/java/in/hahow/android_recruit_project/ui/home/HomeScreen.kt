@@ -57,8 +57,9 @@ fun HomeScreen(
                                 imageUrl = course.coverImageUrl,
                                 statusString = stringResource(id = R.string.status_incubating),
                                 statusBackgroundColor = Incubating,
-                                progressString = "",
-                                progressBackgroundColor = Incubating
+                                progressString = "test",
+                                progressBackgroundColor = Incubating,
+                                progress = 0.5f
                             )
                         }
                         is Course.Success -> {
