@@ -10,6 +10,8 @@ sealed class Course {
         val coverImageUrl: String,
         val isExpired: Boolean,
         val countDown: Long?,
+        val progressText: String,
+        val progress:Int,
     ) : Course()
 
     data class Published(
@@ -17,6 +19,8 @@ sealed class Course {
         val successCriteria: SuccessCriteria,
         val numSoldTickets: Int,
         val coverImageUrl: String,
+        val progressText: String,
+        val progress:Int,
     ) : Course()
 
     data class Success(
@@ -24,5 +28,7 @@ sealed class Course {
         val successCriteria: SuccessCriteria,
         val numSoldTickets: Int,
         val coverImageUrl: String,
+        val progressText: String,
+        val progress:Int,
     ) : Course()
 }

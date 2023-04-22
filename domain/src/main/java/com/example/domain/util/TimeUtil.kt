@@ -1,4 +1,4 @@
-package com.example.domain.util.time
+package com.example.domain.util
 
 import java.time.Duration
 import java.time.ZonedDateTime

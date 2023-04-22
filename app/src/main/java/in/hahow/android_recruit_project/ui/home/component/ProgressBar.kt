@@ -17,8 +17,8 @@ import `in`.hahow.android_recruit_project.ui.theme.HahowTheme
 @Composable
 fun ProgressBar(
     modifier: Modifier = Modifier,
-    title:String,
-    progress:Float,
+    title: String,
+    progress: Int,
     progressColor: Color
 ) {
     Column(
@@ -31,7 +31,7 @@ fun ProgressBar(
         )
         LinearProgressIndicator(
             modifier = Modifier.fillMaxWidth(),
-            progress = progress,
+            progress = progress / 100f,
             color = progressColor
         )
     }
@@ -44,7 +44,7 @@ fun ProgressBarPreview() {
         ProgressBar(
             modifier = Modifier.width(100.dp),
             title = "Progress Title",
-            progress = 0.5f,
+            progress = 50,
             progressColor = Color(0xFFF2AA63)
         )
     }
@@ -57,7 +57,7 @@ fun ProgressBarPreviewDark() {
         ProgressBar(
             modifier = Modifier.width(100.dp),
             title = "Progress Title",
-            progress = 0.5f,
+            progress = 50,
             progressColor = Color(0xFFF2AA63)
         )
     }

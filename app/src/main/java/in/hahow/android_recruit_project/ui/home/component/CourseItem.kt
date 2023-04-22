@@ -24,7 +24,7 @@ fun CourseItem(
     statusBackgroundColor: Color,
     progressString: String,
     progressBackgroundColor: Color,
-    progress: Float,
+    progress: Int,
     countDown: Long? = null,
 ) {
     Row(
