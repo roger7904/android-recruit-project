@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.domain.model.Course
 import com.skydoves.landscapist.glide.GlideImage
 import `in`.hahow.android_recruit_project.R
+import `in`.hahow.android_recruit_project.ui.home.component.CourseItem
 import `in`.hahow.android_recruit_project.ui.home.component.Status
 import `in`.hahow.android_recruit_project.ui.theme.Incubating
 
@@ -50,12 +51,14 @@ fun HomeScreen(
                 items((homeUiState as HomeUiState.Success).courses) { course ->
                     when (course) {
                         is Course.Incubating -> {
-                            IncubatingCourseItem(
-                                modifier = Modifier
-                                    .fillParentMaxWidth(),
+                            CourseItem(
+                                modifier = Modifier.fillParentMaxWidth(),
+                                title = course.title,
                                 imageUrl = course.coverImageUrl,
                                 statusString = stringResource(id = R.string.status_incubating),
-                                statusBackgroundColor = Incubating
+                                statusBackgroundColor = Incubating,
+                                progressString = "",
+                                progressBackgroundColor = Incubating
                             )
                         }
                         is Course.Success -> {
