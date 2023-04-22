@@ -12,8 +12,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import `in`.hahow.android_recruit_project.R
+import `in`.hahow.android_recruit_project.ui.theme.HahowTheme
+import `in`.hahow.android_recruit_project.ui.theme.Incubating
 
 @Composable
 fun CourseItem(
@@ -84,5 +87,22 @@ fun CourseItem(
                 )
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCourseItem() {
+    HahowTheme {
+        CourseItem(
+            title = "Sample Course",
+            imageUrl = "",
+            statusString = "募資中",
+            statusBackgroundColor = Incubating,
+            progressString = "10/20人",
+            progressBackgroundColor = Incubating,
+            progress = 50,
+            countDown = 7
+        )
     }
 }

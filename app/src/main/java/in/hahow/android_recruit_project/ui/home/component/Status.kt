@@ -28,7 +28,7 @@ fun Status(
         modifier = modifier
             .clip(RoundedCornerShape(topStart = cornerSize, bottomEnd = cornerSize))
             .background(backgroundColor)
-            .padding(horizontal = 10.dp, vertical = 5.dp),
+            .padding(horizontal = 5.dp, vertical = 3.dp),
         text = content,
         color = textColor,
         style = MaterialTheme.typography.bodySmall
@@ -60,4 +60,3 @@ fun StatusPreviewDark() {
         )
     }
 }
-
