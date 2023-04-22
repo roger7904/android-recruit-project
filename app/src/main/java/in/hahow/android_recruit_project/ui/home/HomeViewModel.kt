@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
             initialValue = HomeUiState.Loading,
         )
 
-    private fun homeUiState(getCoursesResourcesUseCase: GetCoursesResourcesUseCase) : Flow<HomeUiState> {
+    private fun homeUiState(getCoursesResourcesUseCase: GetCoursesResourcesUseCase): Flow<HomeUiState> {
         return getCoursesResourcesUseCase()
             .asResult()
             .map { coursesResult ->

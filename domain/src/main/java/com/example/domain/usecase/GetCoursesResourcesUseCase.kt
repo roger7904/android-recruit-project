@@ -25,10 +25,12 @@ class GetCoursesResourcesUseCase @Inject constructor(
                             coverImageUrl = courseDto.coverImageUrl,
                             isExpired = daysRemain == null,
                             countDown = daysRemain,
-                            progressText = "${courseDto.numSoldTickets} / ${courseDto
-                                .successCriteria.numSoldTickets} 人",
-                            progress = courseDto.numSoldTickets.calculateProgress(courseDto
-                                .successCriteria.numSoldTickets)
+                            progressText = "${courseDto.numSoldTickets} / ${
+                                courseDto.successCriteria.numSoldTickets
+                            } 人",
+                            progress = courseDto.numSoldTickets.calculateProgress(
+                                courseDto.successCriteria.numSoldTickets
+                            )
                         )
                     }
                     Status.PUBLISHED -> Course.Published(
@@ -36,20 +38,26 @@ class GetCoursesResourcesUseCase @Inject constructor(
                         successCriteria = courseDto.successCriteria,
                         numSoldTickets = courseDto.numSoldTickets,
                         coverImageUrl = courseDto.coverImageUrl,
-                        progressText = "${courseDto.numSoldTickets.calculateProgress(courseDto
-                            .successCriteria.numSoldTickets)}%",
-                        progress = courseDto.numSoldTickets.calculateProgress(courseDto
-                            .successCriteria.numSoldTickets)
+                        progressText = "${
+                            courseDto.numSoldTickets.calculateProgress(
+                                courseDto.successCriteria.numSoldTickets
+                            )
+                        }%",
+                        progress = courseDto.numSoldTickets.calculateProgress(
+                            courseDto.successCriteria.numSoldTickets
+                        )
                     )
                     Status.SUCCESS -> Course.Success(
                         title = courseDto.title,
                         successCriteria = courseDto.successCriteria,
                         numSoldTickets = courseDto.numSoldTickets,
                         coverImageUrl = courseDto.coverImageUrl,
-                        progressText = "${courseDto.numSoldTickets} / ${courseDto.successCriteria
-                            .numSoldTickets} 人",
-                        progress = courseDto.numSoldTickets.calculateProgress(courseDto
-                            .successCriteria.numSoldTickets)
+                        progressText = "${courseDto.numSoldTickets} / ${
+                            courseDto.successCriteria.numSoldTickets
+                        } 人",
+                        progress = courseDto.numSoldTickets.calculateProgress(
+                            courseDto.successCriteria.numSoldTickets
+                        )
                     )
                 }
             }
