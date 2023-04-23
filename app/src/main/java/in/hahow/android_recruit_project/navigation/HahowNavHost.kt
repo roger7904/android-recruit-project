@@ -1,30 +1,24 @@
-package `in`.hahow.android_recruit_project.ui
+package `in`.hahow.android_recruit_project.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import `in`.hahow.android_recruit_project.ui.home.HomeScreen
+import `in`.hahow.android_recruit_project.ui.home.navigation.homeRoute
+import `in`.hahow.android_recruit_project.ui.home.navigation.homeScreen
 
 @Composable
-fun HahowNavGraph(
+fun HahowNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = HahowDestinations.HOME_ROUTE,
-    navActions: HahowNavigationActions = remember(navController) {
-        HahowNavigationActions(navController)
-    }
+    startDestination: String = homeRoute,
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(HahowDestinations.HOME_ROUTE) {
-            HomeScreen()
-        }
+        homeScreen()
     }
 }

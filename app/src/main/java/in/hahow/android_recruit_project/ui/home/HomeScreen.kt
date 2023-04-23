@@ -12,21 +12,34 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.domain.model.Course
 import `in`.hahow.android_recruit_project.R
 import `in`.hahow.android_recruit_project.ui.home.component.CourseItem
+import `in`.hahow.android_recruit_project.ui.theme.HahowTheme
 import `in`.hahow.android_recruit_project.ui.theme.Incubating
 import `in`.hahow.android_recruit_project.ui.theme.Published
 import `in`.hahow.android_recruit_project.ui.theme.Success
 
 @Composable
-fun HomeScreen(
+internal fun HomeRoute(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val homeUiState: HomeUiState by viewModel.homeUiState.collectAsState()
+    val homeUiState by viewModel.homeUiState.collectAsState()
+    HomeScreen(
+        homeUiState = homeUiState,
+        modifier = modifier,
+    )
+}
 
+@Composable
+fun HomeScreen(
+    homeUiState: HomeUiState,
+    modifier: Modifier = Modifier,
+) {
     LazyColumn(
         modifier = modifier,
     ) {
@@ -41,7 +54,7 @@ fun HomeScreen(
                 }
             }
             is HomeUiState.Success -> {
-                items((homeUiState as HomeUiState.Success).courses) { course ->
+                items(homeUiState.courses) { course ->
                     when (course) {
                         is Course.Incubating -> {
                             CourseItem(
@@ -92,5 +105,18 @@ fun HomeScreen(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview(
+    @PreviewParameter(CoursePreviewParameterProvider::class)
+    courses: List<Course>
+) {
+    HahowTheme {
+        HomeScreen(
+            homeUiState = HomeUiState.Success(courses),
+        )
     }
 }
