@@ -60,6 +60,11 @@ class GetCoursesResourcesUseCase @Inject constructor(
                         )
                     )
                 }
+            }.filter { course -> // Filter out expired incubating courses
+                when (course) {
+                    is Course.Incubating -> !course.isExpired
+                    else -> true
+                }
             }
         }
 }
