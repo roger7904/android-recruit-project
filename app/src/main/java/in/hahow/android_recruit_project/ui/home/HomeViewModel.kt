@@ -17,12 +17,13 @@ class HomeViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val homeUiState: StateFlow<HomeUiState> = homeUiState(getCoursesResourcesUseCase)
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = HomeUiState.Loading,
-        )
+    val homeUiState: StateFlow<HomeUiState> =
+        homeUiState(getCoursesResourcesUseCase)
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = HomeUiState.Loading,
+            ) // 5 seconds timeout
 
     private fun homeUiState(getCoursesResourcesUseCase: GetCoursesResourcesUseCase): Flow<HomeUiState> {
         return getCoursesResourcesUseCase()

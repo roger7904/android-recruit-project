@@ -32,13 +32,13 @@ fun CourseItem(
 ) {
     Row(
         modifier = modifier
-            .height(IntrinsicSize.Min)
+            .height(IntrinsicSize.Min) // pre measure height
             .background(MaterialTheme.colorScheme.background)
             .padding(16.dp)
     ) {
         Box(
             modifier = Modifier
-                .weight(0.3f)
+                .weight(0.3f) // relative width
                 .aspectRatio(1.6f)
                 .clip(RoundedCornerShape(10.dp)),
         ) {

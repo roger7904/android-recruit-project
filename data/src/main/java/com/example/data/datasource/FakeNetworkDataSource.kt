@@ -17,7 +17,7 @@ class FakeNetworkDataSource @Inject constructor(
     @OptIn(ExperimentalSerializationApi::class)
     override suspend fun getCourses(): CoursesDto =
         withContext(ioDispatcher) {
-            assets.open(COURSES_ASSET).use(networkJson::decodeFromStream)
+            assets.open(COURSES_ASSET).use(networkJson::decodeFromStream) // use() will close the stream
         }
 
     companion object {

@@ -23,7 +23,6 @@ fun Status(
     textColor: Color,
     cornerSize: Dp
 ) {
-
     Text(
         modifier = modifier
             .clip(RoundedCornerShape(topStart = cornerSize, bottomEnd = cornerSize))

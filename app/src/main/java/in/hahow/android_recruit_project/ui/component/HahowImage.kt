@@ -17,6 +17,7 @@ fun HahowImage(
 ) {
     GlideImage(
         imageModel = { imageUrl },
+        // shows a gradient when loading an image.
         loading = {
             Box(
                 modifier = modifier.background(
@@ -26,9 +27,10 @@ fun HahowImage(
                 )
             )
         },
+        // shows an error text if fail to load an image.
         failure = {
             Text(text = "image request failed.")
         },
-        previewPlaceholder = R.drawable.ic_launcher_background
+        previewPlaceholder = R.drawable.ic_launcher_background // used to preview in compose preview layout.
     )
 }

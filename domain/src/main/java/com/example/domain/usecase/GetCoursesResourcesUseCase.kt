@@ -14,7 +14,7 @@ class GetCoursesResourcesUseCase @Inject constructor(
 ) {
     operator fun invoke(): Flow<List<Course>> =
         coursesRepository.getCoursesResources().map { coursesDto ->
-            coursesDto.map { courseDto ->
+            coursesDto.map { courseDto -> // Map CourseDto to Domain Model
                 when (courseDto.status) {
                     Status.INCUBATING -> {
                         val daysRemain: Long? = courseDto.proposalDueTime?.calculateDaysRemain()

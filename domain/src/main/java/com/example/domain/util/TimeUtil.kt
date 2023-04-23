@@ -5,20 +5,20 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 fun String.calculateDaysRemain(): Long? {
-    // 將字串轉換為 ZonedDateTime
+    // convert string to ZonedDateTime
     val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
     val dateTime = ZonedDateTime.parse(this, formatter)
 
-    // 獲取當前的 ZonedDateTime
+    // get current ZonedDateTime
     val now = ZonedDateTime.now()
 
-    // 計算兩個日期之間的 Duration
+    // calculate Duration between now and dateTime
     val duration = Duration.between(now, dateTime)
 
     if (duration.toDays() <= 0) {
         return null
     }
 
-    // 將 Duration 轉換為天數
+    // convert Duration to days
     return duration.toDays()
 }
