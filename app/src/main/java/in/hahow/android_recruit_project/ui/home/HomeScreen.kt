@@ -17,7 +17,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.domain.model.Course
 import `in`.hahow.android_recruit_project.R
-import `in`.hahow.android_recruit_project.ui.home.component.CourseItem
+import `in`.hahow.android_recruit_project.ui.component.CourseItem
+import `in`.hahow.android_recruit_project.ui.previewparameter.CoursePreviewParameterProvider
 import `in`.hahow.android_recruit_project.ui.theme.HahowTheme
 import `in`.hahow.android_recruit_project.ui.theme.Incubating
 import `in`.hahow.android_recruit_project.ui.theme.Published
@@ -36,7 +37,7 @@ internal fun HomeRoute(
 }
 
 @Composable
-fun HomeScreen(
+internal fun HomeScreen(
     homeUiState: HomeUiState,
     modifier: Modifier = Modifier,
 ) {

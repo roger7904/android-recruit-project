@@ -1,4 +1,4 @@
-package `in`.hahow.android_recruit_project.ui
+package `in`.hahow.android_recruit_project
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

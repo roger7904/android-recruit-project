@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidrecruitproject">
         <activity
-            android:name=".ui.HahowActivity"
+            android:name=".HahowActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.Androidrecruitproject" >

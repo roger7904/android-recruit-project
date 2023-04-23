@@ -1,4 +1,4 @@
-package `in`.hahow.android_recruit_project.ui.home.component
+package `in`.hahow.android_recruit_project.ui.component
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background

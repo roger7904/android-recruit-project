@@ -1,4 +1,4 @@
-package `in`.hahow.android_recruit_project.ui.home
+package `in`.hahow.android_recruit_project.ui.previewparameter
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.example.data.model.SuccessCriteria
