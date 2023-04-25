@@ -58,6 +58,8 @@
   - Higher layers 響應 lower layers 的變化。
   - Events 從上往下流動。
   - Data 從下往上流動。
+
+  下圖為當 app start 之後 init ViewModel invoke GetCoursesResourcesUseCase 之後的 data flow
   <center>
     <img src="docs/data_flow.jpg" width="600px"/>
   </center>
