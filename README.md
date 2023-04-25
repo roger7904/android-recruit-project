@@ -53,3 +53,11 @@
           domain model
     - data - repository、datasource
         - 統一透過 repository 與 datasource 交流，在這個專案中我做了一個 FakeNetworkDataSource 用以模擬向 remote 端拿資料的情境
+
+- 架構遵循 reactive programming model with unidirectional data flow。數據層位於底部，主要概念如下：
+  - Higher layers 響應 lower layers 的變化。
+  - Events 從上往下流動。
+  - Data 從下往上流動。
+  <center>
+    <img src="docs/data_flow.jpg" width="600px"/>
+  </center>
